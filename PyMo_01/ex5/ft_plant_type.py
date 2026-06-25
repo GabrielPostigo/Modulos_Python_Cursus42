@@ -7,36 +7,37 @@ class Plant:
         self.age = self.start_age
 
     @classmethod
-    def creation(cls, name: str, start_height: float, start_age: int):
+    def creation(cls,
+                 name: str, start_height: float, start_age: int) -> "Plant":
         print(f"Created: {name}, {start_height}cm, {start_age} days old")
         return cls(name, start_height, start_age)
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
-    def grow(self):
+    def grow(self) -> None:
         self.height = self.height + 0.8
 
-    def agemore(self):
+    def agemore(self) -> None:
         self.age = self.age + 1
 
-    def set_height(self, new_h: float):
+    def set_height(self, new_h: float) -> None:
         if new_h >= 0:
             print(f"Height updated: {new_h}cm")
             self.height = new_h
         else:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
-            self.height = self._start_height
+            self.height = self.start_height
 
-    def set_age(self, new_a: int):
+    def set_age(self, new_a: int) -> None:
         if new_a >= 0:
             print(f"Age updated: {new_a} days")
             self.age = new_a
         else:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
-            self.age = self._start_age
+            self.age = self.start_age
 
 
 class Flower(Plant):
@@ -44,11 +45,11 @@ class Flower(Plant):
         super().__init__(name, start_height, start_age)
         self.color = color
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
         print(f"Color: {self.color}")
 
-    def bloom(self, blo=False):
+    def bloom(self, blo=False) -> None:
         self.show()
         if not blo:
             print(f"{self.name} has not bloomed yet")
@@ -63,7 +64,7 @@ class Tree(Plant):
         super().__init__(name, start_height, start_age)
         self.trunk_diameter = trunk_diameter
 
-    def produce_shade(self, sha=False):
+    def produce_shade(self, sha=False) -> None:
         self.show()
         print(f"Trunk diameter: {self.trunk_diameter}m")
         if not sha:
@@ -81,29 +82,30 @@ class Vegetable(Plant):
         self.har_season = har_season
         self.nutri_val = nutri_val
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Harvest Season: {self.har_season}")
         print(f"Nutritional value: {self.nutri_val}")
 
-    def grow_20(self):
+    def grow_20(self) -> None:
         print("[make tomato grow and age for 20 days]")
         self.age = self.age + 20
         self.height = self.height + 42
         self.nutri_val = self.nutri_val + 20
 
 
-rose = Flower("Rose", 15.0, 10, "red")
-oak = Tree("Oak", 200.0, 365, 5.0)
-tomato = Vegetable("Tomato", 5.0, 10, "April", 0)
-print("=== Garden Plant Types ===")
-print("=== Flower")
-rose.bloom()
-print()
-print("=== Tree")
-oak.produce_shade()
-print()
-print("=== Vegetable")
-tomato.show()
-tomato.grow_20()
-tomato.show()
+if __name__ == "__main__":
+    rose = Flower("Rose", 15.0, 10, "red")
+    oak = Tree("Oak", 200.0, 365, 5.0)
+    tomato = Vegetable("Tomato", 5.0, 10, "April", 0)
+    print("=== Garden Plant Types ===")
+    print("=== Flower")
+    rose.bloom()
+    print()
+    print("=== Tree")
+    oak.produce_shade()
+    print()
+    print("=== Vegetable")
+    tomato.show()
+    tomato.grow_20()
+    tomato.show()
