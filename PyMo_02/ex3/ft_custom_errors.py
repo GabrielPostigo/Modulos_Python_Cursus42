@@ -49,4 +49,3 @@ print("Testing PlantError...")
 raise PlantError("Tomato")
 print("")
 print("Testing WaterError...")
-raise 

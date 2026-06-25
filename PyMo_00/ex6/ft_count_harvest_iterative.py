@@ -1,4 +1,4 @@
-def ft_count_harvest_iterative():
+def ft_count_harvest_iterative() -> None:
     days = int(input("Days until harvest: ")) + 1
     x = 1
     for x in range(days + 1):
@@ -6,6 +6,3 @@ def ft_count_harvest_iterative():
             print("Harvest time!")
         else:
             print("Day ", x)
-
-
-ft_count_harvest_iterative()

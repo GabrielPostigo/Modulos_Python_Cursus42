@@ -1,5 +1,2 @@
-def ft_hello_garden():
+def ft_hello_garden() -> None:
     print("Hello, Garden Community!\n")
-
-
-ft_hello_garden()
