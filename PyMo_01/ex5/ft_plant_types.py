@@ -46,8 +46,8 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, start_height, start_age, color: str):
-        super().__init__(name, start_height, start_age)
+    def __init__(self, name, height, age, color: str):
+        super().__init__(name, height, age)
         self.color = color
 
     def show(self) -> None:
@@ -65,8 +65,8 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name, start_height, start_age, trunk_diameter: float):
-        super().__init__(name, start_height, start_age)
+    def __init__(self, name, height, age, trunk_diameter: float):
+        super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
     def produce_shade(self, sha=False) -> None:
@@ -77,13 +77,13 @@ class Tree(Plant):
             self.produce_shade(sha=True)
         else:
             print(f"Tree {self.name} now produces")
-            print(f"a shade of {self.start_height}cm long")
+            print(f"a shade of {self.height}cm long")
             print(f"and {self.trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, start_height, start_age, har_season, nutri_val):
-        super().__init__(name, start_height, start_age)
+    def __init__(self, name, height, age, har_season, nutri_val):
+        super().__init__(name, height, age)
         self.har_season = har_season
         self.nutri_val = nutri_val
 
