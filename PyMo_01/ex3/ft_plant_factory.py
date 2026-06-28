@@ -14,7 +14,7 @@ class Plant:
                  name: str,
                  start_height: float,
                  start_age: int) -> "Plant":
-        print(f"Created: {name}, {start_height}cm, {start_age} days old")
+        print(f"Created: {name}: {start_height}cm, {start_age} days old")
         return cls(name, start_height, start_age)
 
     def show(self) -> None:
@@ -30,7 +30,27 @@ class Plant:
 if __name__ == "__main__":
     print("=== Plant Factory Output ===")
     rose = Plant.creation("Rose", 25.0, 30)
+    rose.show()
+    rose.agemore()
+    rose.grow()
+    rose.show()
     oak = Plant.creation("Oak", 200.0, 365)
+    oak.show()
+    oak.agemore()
+    oak.grow()
+    oak.show()
     cactus = Plant.creation("Cactus", 5.0, 90)
+    cactus.show()
+    cactus.agemore()
+    cactus.grow()
+    cactus.show()
     sunfl = Plant.creation("Sunflower", 80.0, 45)
+    sunfl.show()
+    sunfl.agemore()
+    sunfl.grow()
+    sunfl.show()
     fern = Plant.creation("Fern", 15.0, 120)
+    fern.show()
+    fern.agemore()
+    fern.grow()
+    fern.show()

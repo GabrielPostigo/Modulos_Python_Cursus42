@@ -2,19 +2,19 @@ class Plant:
     def __init__(self,
                  name: str,
                  height: float,
-                 age: int):
+                 agev: int):
         self.name = name
         self.height = height
-        self.age = age
+        self.agev = agev
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        print(f"{self.name}: {self.height}cm, {self.agev} days old")
 
     def grow(self) -> None:
         self.height = self.height + 0.8
 
-    def agemore(self) -> None:
-        self.age = self.age + 1
+    def age(self) -> None:
+        self.agev = self.agev + 1
 
 
 if __name__ == "__main__":
@@ -24,9 +24,9 @@ if __name__ == "__main__":
     print("=== Garden Plant Growth ===")
     for day in range(1, 8):
         print(f"=== Day {day} ===")
-        print(f"{plant.name}: {plant.height:.1f}cm, {plant.age} days old")
-        res1 = plant.height
+        print(f"{plant.name}: {plant.height:.1f}cm, {plant.agev} days old")
         plant.grow()
-        plant.agemore()
+        res1 = plant.height
+        plant.age()
     res = res1 - res
     print(f"Growth this week: {res:.1f}cm")
