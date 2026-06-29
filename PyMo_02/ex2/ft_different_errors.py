@@ -40,7 +40,8 @@ def test_error_types():
         garden_operations(3)
 
 
-print("=== Garden Error Types Demo ===")
-test_error_types()
-print("")
-print("All error types tested successfully!")
+if __name__ == "__main__":
+    print("=== Garden Error Types Demo ===")
+    test_error_types()
+    print("")
+    print("All error types tested successfully!")

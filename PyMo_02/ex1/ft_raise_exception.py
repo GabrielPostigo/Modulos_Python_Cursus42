@@ -26,5 +26,6 @@ def test_temperature():
     return ("All tests completed - program didn't crash!")
 
 
-print("=== Garden Temperature ===")
-print(test_temperature())
+if __name__ == "__main__":
+    print("=== Garden Temperature ===")
+    print(test_temperature())

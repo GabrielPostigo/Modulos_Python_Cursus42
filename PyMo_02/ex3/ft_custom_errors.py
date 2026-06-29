@@ -31,21 +31,33 @@ class PlantError(GardenError):
 
 
 class WaterError(GardenError):
-    def __init__(self, message, errors):
-        super.__init__(message)
-        if not errors:
-            return ("Not enough water in the tank!")
-        else:
-            self.errors = errors
+    def __init__(self, message, water):
+        super.__init__(message, water)
 
     def __str__(self):
-        return ("Caught", self.__class__.__name__,
-                ": Not enough water in the tank!")
+        if self.water < 20:
+            return ("Caught", self.__class__.__name__,
+                    ": Not enough water in the tank!")
+        else:
+            return ("Caught", self.__class__.__name__,
+                    ": The", self.plant_n, "plant is wilting!")
 
 
-print("=== Custom Garden Errors Demo ===")
-print()
-print("Testing PlantError...")
-raise PlantError("Tomato")
-print("")
-print("Testing WaterError...")
+# class Plant():
+#     def __init__(self, name, water):
+#         self.name = name
+#         self.water = water
+
+#     def show(self):
+#         try:
+
+#             print(f"{self.name} is watering ")
+
+
+if __name__ == "__main__":
+    print("=== Custom Garden Errors Demo ===")
+    print()
+    print("Testing PlantError...")
+    raise PlantError("Tomato")
+    print("")
+    print("Testing WaterError...")
