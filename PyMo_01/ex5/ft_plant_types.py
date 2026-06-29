@@ -48,11 +48,11 @@ class Plant:
 class Flower(Plant):
     def __init__(self, name, height, age, color: str):
         super().__init__(name, height, age)
-        self.color = color
+        self._color = color
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
-        print(f"Color: {self.color}")
+        print(f"{self.name}: {self._height}cm, {self._age} days old")
+        print(f"Color: {self._color}")
 
     def bloom(self, blo=False) -> None:
         self.show()
@@ -67,44 +67,44 @@ class Flower(Plant):
 class Tree(Plant):
     def __init__(self, name, height, age, trunk_diameter: float):
         super().__init__(name, height, age)
-        self.trunk_diameter = trunk_diameter
+        self._trunk_diameter = trunk_diameter
 
     def produce_shade(self, sha=False) -> None:
         self.show()
-        print(f"Trunk diameter: {self.trunk_diameter}cm")
+        print(f"Trunk diameter: {self._trunk_diameter}cm")
         if not sha:
             print(f"[asking the {self.name} to produce shade]")
             self.produce_shade(sha=True)
         else:
             print(f"Tree {self.name} now produces")
-            print(f"a shade of {self.height}cm long")
-            print(f"and {self.trunk_diameter}cm wide.")
+            print(f"a shade of {self._height}cm long")
+            print(f"and {self._trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):
     def __init__(self, name, height, age, har_season, nutri_val):
         super().__init__(name, height, age)
-        self.har_season = har_season
-        self.nutri_val = nutri_val
+        self._har_season = har_season
+        self._nutri_val = nutri_val
 
     def show(self) -> None:
         super().show()
-        print(f"Harvest Season: {self.har_season}")
-        print(f"Nutritional value: {self.nutri_val}")
+        print(f"Harvest Season: {self._har_season}")
+        print(f"Nutritional value: {self._nutri_val}")
 
     def grow(self) -> None:
         self._height = self._height + 0.8
-        self.nutri_val = self.nutri_val + 20
+        self._nutri_val = self._nutri_val + 20
 
     def agemore(self) -> None:
         self._age = self._age + 1
-        self.nutri_val = self.nutri_val + 1
+        self._nutri_val = self._nutri_val + 1
 
     def grow_20(self) -> None:
         print(f"[make {self.name} grow and age for 20 days]")
-        self.age = self.age + 20
-        self.height = self.height + 42
-        self.nutri_val = self.nutri_val + 20
+        self._age = self._age + 20
+        self._height = self._height + 42
+        self._nutri_val = self._nutri_val + 20
 
 
 if __name__ == "__main__":

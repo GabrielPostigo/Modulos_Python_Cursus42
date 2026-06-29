@@ -13,7 +13,7 @@ class Plant:
 
     @classmethod
     def anony_creation(cls) -> "Plant":
-        any_name = "Unknown Plant"
+        any_name = "Unknown plant"
         any_height = 0.0
         any_age = 0
         return cls(any_name, any_height, any_age)
@@ -44,7 +44,7 @@ class Plant:
 
     def grow(self) -> None:
         self.stats._gc += 1
-        self.height = self.height + 0.8
+        self.height = self.height + 8.0
 
     def agemore(self) -> None:
         self.stats._ac += 1
@@ -110,7 +110,7 @@ class Seed(Flower):
             print(f"{self.name} is blooming beautifully!")
 
     def grow_20(self) -> None:
-        print(f"[make {self.name} grow, age and bloom]")
+        print(f"[make {self.name.lower()} grow, age and bloom]")
         self.stats._gc += 1
         self.stats._ac += 1
         self.age = self.age + 20
@@ -131,10 +131,9 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         self.stats._pc += 1
-        print(f"[asking the {self.name} to produce shade]")
-        print("Tree", self.name, "now produces a shade of",
-              self.height, "cm long and", self.trunk_diameter,
-              "cm wide")
+        print(f"[asking the {self.name.lower()} to produce shade]")
+        print("Tree", {self.name}, "now produces a shade of", {self.height},
+              "cm long and", {self.trunk_diameter}, "cm wide.")
 
 
 class Vegetable(Plant):
