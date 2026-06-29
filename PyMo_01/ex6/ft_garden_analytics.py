@@ -132,8 +132,8 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         self.stats._pc += 1
         print(f"[asking the {self.name.lower()} to produce shade]")
-        print("Tree", {self.name}, "now produces a shade of", {self.height},
-              "cm long and", {self.trunk_diameter}, "cm wide.")
+        print(f"Tree {self.name} now produces a shade of "
+              f"{self.height}cm long and {self.trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):
