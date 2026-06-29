@@ -29,20 +29,20 @@ class Plant:
     def set_height(self, new_h: float) -> None:
         if new_h >= 0:
             print(f"Height updated: {new_h}cm")
-            self.height = new_h
+            self._height = new_h
         else:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
-            self.height = self._height
+            self._height = self._height
 
     def set_age(self, new_a: int) -> None:
         if new_a >= 0:
             print(f"Age updated: {new_a} days")
-            self.age = new_a
+            self._age = new_a
         else:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
-            self.age = self._age
+            self._age = self._age
 
 
 if __name__ == "__main__":
