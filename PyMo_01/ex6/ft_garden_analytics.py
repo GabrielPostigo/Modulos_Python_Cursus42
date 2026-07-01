@@ -48,7 +48,7 @@ class Plant:
 
     def agemore(self) -> None:
         self.stats._ac += 1
-        self._age = self.age + 1
+        self._age = self._age + 1
 
     def get_height(self) -> float:
         return self._height
@@ -152,8 +152,8 @@ class Vegetable(Plant):
         print(f"[make {self.name} grow and age for 20 days]")
         self.stats._gc += 1
         self.stats._ac += 1
-        self.age = self.age + 20
-        self.height = self.height + 42
+        self._age = self._age + 20
+        self._height = self._height + 42
         self.nutri_val = self.nutri_val + 20
 
 
