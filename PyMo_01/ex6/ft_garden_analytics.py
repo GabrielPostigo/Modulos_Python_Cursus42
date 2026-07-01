@@ -1,8 +1,8 @@
 class Plant:
     def __init__(self, name: str, height: float, age: int):
         self.name = name
-        self.height = height
-        self.age = age
+        self._height = height
+        self._age = age
         self.stats = self.Stadistics()
 
     @classmethod
@@ -40,33 +40,37 @@ class Plant:
 
     def show(self) -> None:
         self.stats._sc += 1
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        print(f"{self.name}: {self._height}cm, {self._age} days old")
 
     def grow(self) -> None:
         self.stats._gc += 1
-        self.height = self.height + 8.0
+        self._height = self._height + 8.0
 
     def agemore(self) -> None:
         self.stats._ac += 1
-        self.age = self.age + 1
+        self._age = self.age + 1
+
+    def get_height(self) -> float:
+        return self._height
+
+    def get_age(self) -> int:
+        return self._age
 
     def set_height(self, new_h: float) -> None:
         if new_h >= 0:
             print(f"Height updated: {new_h}cm")
-            self.height = new_h
+            self._height = new_h
         else:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
-            self.height = self.height
 
     def set_age(self, new_a: int) -> None:
         if new_a >= 0:
             print(f"Age updated: {new_a} days")
-            self.age = new_a
+            self._age = new_a
         else:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
-            self.age = self.age
 
 
 class Flower(Plant):
@@ -76,8 +80,7 @@ class Flower(Plant):
         self.blo = False
 
     def show(self) -> None:
-        self.stats._sc += 1
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        super().show()
         print(f"Color: {self.color}")
 
     def bloom(self) -> None:
@@ -96,8 +99,7 @@ class Seed(Flower):
         self.blo = False
 
     def show(self) -> None:
-        self.stats._sc += 1
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        super().show()
         print(f"Color: {self.color}")
         self.bloom()
         print(f"Seeds: {self.seeds}")
@@ -113,8 +115,8 @@ class Seed(Flower):
         print(f"[make {self.name.lower()} grow, age and bloom]")
         self.stats._gc += 1
         self.stats._ac += 1
-        self.age = self.age + 20
-        self.height = self.height + 30
+        self._age = self._age + 20
+        self._height = self._height + 30
         if self.blo:
             self.seeds += 42
 
@@ -125,14 +127,13 @@ class Tree(Plant):
         self.trunk_diameter = trunk_diameter
 
     def show(self) -> None:
-        self.stats._sc += 1
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        super().show()
         print(f"Trunk diameter: {self.trunk_diameter}cm")
 
     def produce_shade(self) -> None:
         self.stats._pc += 1
         print(f"[asking the {self.name.lower()} to produce shade]")
-        print("Tree", {self.name}, "now produces a shade of", {self.height},
+        print("Tree", {self.name}, "now produces a shade of", {self._height},
               "cm long and", {self.trunk_diameter}, "cm wide.")
 
 
@@ -174,8 +175,8 @@ if __name__ == "__main__":
 
     print("=== Garden statistics ===")
     print("=== Check year-old")
-    pru1.isyear(pru1.age)
-    pru2.isyear(pru2.age)
+    pru1.isyear(pru1._age)
+    pru2.isyear(pru2._age)
     print("")
 
     print("=== Flower")

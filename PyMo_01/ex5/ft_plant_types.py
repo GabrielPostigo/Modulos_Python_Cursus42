@@ -33,7 +33,6 @@ class Plant:
         else:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
-            self.height = self._height
 
     def set_age(self, new_a: int) -> None:
         if new_a >= 0:
@@ -42,7 +41,6 @@ class Plant:
         else:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
-            self.age = self._age
 
 
 class Flower(Plant):
@@ -69,16 +67,18 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self._trunk_diameter = trunk_diameter
 
-    def produce_shade(self, sha=False) -> None:
-        self.show()
+    def show(self) -> None:
+        super().show()
         print(f"Trunk diameter: {self._trunk_diameter}cm")
+
+    def produce_shade(self, sha=False) -> None:
         if not sha:
             print(f"[asking the {self.name} to produce shade]")
             self.produce_shade(sha=True)
         else:
-            print(f"Tree {self.name} now produces")
-            print(f"a shade of {self._height}cm long")
-            print(f"and {self._trunk_diameter}cm wide.")
+            print(f"Tree {self.name} now produces",
+                  f"a shade of {self._height}cm long"
+                  f"and {self._trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):
@@ -93,8 +93,8 @@ class Vegetable(Plant):
         print(f"Nutritional value: {self._nutri_val}")
 
     def grow(self) -> None:
-        self._height = self._height + 0.8
-        self._nutri_val = self._nutri_val + 20
+        self._height = self._height + 2.1
+        self._nutri_val = self._nutri_val + 1
 
     def agemore(self) -> None:
         self._age = self._age + 1
@@ -116,6 +116,7 @@ if __name__ == "__main__":
     rose.bloom()
     print()
     print("=== Tree")
+    oak.show()
     oak.produce_shade()
     print()
     print("=== Vegetable")

@@ -9,4 +9,4 @@ if __name__ == "__main__":
     print("Height:", height)
     print("Age:", age)
     print(" ")
-    print("=== End of Program ===", end="")
+    print("=== End of Program ===")
