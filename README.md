@@ -2,6 +2,8 @@
 
 Repositorio con ejercicios de Python organizados por módulos. La temática general gira en torno a jardines, plantas, cosechas y errores, y cada archivo practica un concepto concreto.
 
+Nota: por ahora este README solo resume los módulos presentes en el repositorio. La carpeta PyMo03 se omite de forma expresa.
+
 ## Resumen de archivos
 
 ### Raíz
@@ -41,18 +43,27 @@ Repositorio con ejercicios de Python organizados por módulos. La temática gene
 | `PyMo_01/ex1/ft_garden_data.py` | Define una clase `Plant` y crea varias plantas con sus datos. |
 | `PyMo_01/ex2/ft_plant_grown.py` | Simula el crecimiento de una planta durante varios días con métodos de clase. |
 | `PyMo_01/ex3/ft_plant_factory.py` | Introduce un método de clase para crear plantas con estilo fábrica. |
-| `PyMo_01/ex4/ft_garden_security.py` | Añade validaciones para proteger atributos como altura y edad de la planta. |
-| `PyMo_01/ex5/ft_plant_type.py` | Extiende la jerarquía de clases con tipos de plantas como flores, árboles y vegetales. |
-| `PyMo_01/ex6/ft_garden_analytics.py` | Implementa estadísticas del jardín, herencia y distintos comportamientos por clase. |
+| `PyMo_01/ex4/ft_garden_security.py` | Añade validaciones para proteger atributos como altura y edad de la planta mediante setters. |
+| `PyMo_01/ex5/ft_plant_types.py` | Define una jerarquía de clases con `Plant`, `Flower`, `Tree` y `Vegetable`, usando herencia y métodos específicos. |
+| `PyMo_01/ex6/ft_garden_analytics.py` | Amplía la jerarquía con estadísticas de uso, clases anidadas y comportamientos distintos por tipo de planta. |
 
 ### `PyMo_02/` - Excepciones
 
+Esta carpeta se centra en aprender a detectar, lanzar y manejar errores en Python. Cada archivo prueba un aspecto distinto del tratamiento de excepciones.
+
 | Archivo | Resumen |
 |---|---|
-| `PyMo_02/ex0/ft_first_exception.py` | Primer contacto con `try/except` para capturar errores de conversión de texto a número. |
-| `PyMo_02/ex1/ft_raise_exception.py` | Lanza excepciones cuando la temperatura no está dentro de un rango válido. |
-| `PyMo_02/ex2/ft_different_errors.py` | Demuestra el manejo de distintos tipos de errores con `try/except` y `match/case`. |
-| `PyMo_02/ex3/ft_custom_errors.py` | Define excepciones personalizadas para errores propios del jardín. |
+| `PyMo_02/ex0/ft_first_exception.py` | Muestra el primer uso de `try/except`. Intenta convertir texto a entero y captura el fallo cuando la entrada no es numérica. |
+| `PyMo_02/ex1/ft_raise_exception.py` | Añade validación de rango para la temperatura. Lanza una excepción si el valor es demasiado bajo o demasiado alto para las plantas. |
+| `PyMo_02/ex2/ft_different_errors.py` | Simula varios tipos de errores y enseña cómo reaccionar ante cada uno usando `try/except` y `match/case`. |
+| `PyMo_02/ex3/ft_custom_errors.py` | Define errores personalizados relacionados con el jardín, como problemas de agua o plantas en mal estado. |
+
+### Qué se aprende en `PyMo_02`
+
+- Capturar errores sin romper el programa.
+- Lanzar excepciones cuando los datos no son válidos.
+- Diferenciar varios tipos de errores.
+- Crear excepciones propias para casos concretos del proyecto.
 
 ## Ideas que se trabajan
 
@@ -67,5 +78,4 @@ Repositorio con ejercicios de Python organizados por módulos. La temática gene
 - `PyMo_00`: ejercicios de fundamentos.
 - `PyMo_01`: ejercicios de POO.
 - `PyMo_02`: ejercicios de manejo de errores.
-- `observaciones`: apuntes teóricos para complementar los ejercicios.
 
