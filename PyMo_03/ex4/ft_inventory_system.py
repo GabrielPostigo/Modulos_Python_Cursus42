@@ -2,7 +2,7 @@ import sys
 
 if __name__ == "__main__":
     print("=== Inventory System Analysis ===")
-    
+
     # Creation of the list of all arguments
     lis = sys.argv[1:]
 
