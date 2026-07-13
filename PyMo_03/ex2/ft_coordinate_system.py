@@ -1,7 +1,7 @@
 import math
 
 
-def get_player_pos():
+def get_player_pos() -> None:
     try:
         x = float(input("Enter the X value: "))
         y = float(input("Enter the Y value: "))

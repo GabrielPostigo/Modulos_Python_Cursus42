@@ -1,7 +1,7 @@
 import random
 
 
-def gen_player_achievements():
+def gen_player_achievements() -> None:
     # Set of all the achievements avaible
     achi = {"Crafting Genius", "Strategist", "World Savior", "Speed Runner",
             "Survivor", "Master Explorer", "Treasure Hunter", "Unstoppable",

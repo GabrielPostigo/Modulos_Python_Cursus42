@@ -6,7 +6,7 @@ def NoImError(Exception):
         super().__init__(message)
 
 
-def score_ana():
+def score_ana() -> None:
     try:
         lis = sys.argv[1:]
 
