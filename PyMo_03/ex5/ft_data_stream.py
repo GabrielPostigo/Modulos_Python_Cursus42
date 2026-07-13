@@ -4,7 +4,7 @@ import random as ra
 
 # Function that picks a random name from a list
 # of players, and a random action from a list of actions.
-def gen_event():
+def gen_event() -> Generator[None, str, None]:
     names = ["Alice", "Bob", "Charlie", "Dylan"]
     actions = ["eat", "sleep", "grab", "run", "move", "climb",
                "swim", "release"]
@@ -27,13 +27,13 @@ def consume_event(li: list):
 if __name__ == "__main__":
     print("=== Game Data Stream Processor ===")
     i = 0
-    j = 0
     events = []
-    for tup in range(1000):
+    for j in range(12):
+        tup: tuple = gen_event()
         if (i <= 9):
             events.append(tup)
-        print(f"Event {j}: Player {tup[0]} did action {tup[1]}")
-        j += 1
+        print(tup)
+        # print(f"Event {j}: Player {tup[0]} did action {tup[1]}")
     print("Built list of 10 events:", events)
-    for de in range(1, len(events)):
+    for de in range(1, len(events) + 1):
         consume_event(events)
