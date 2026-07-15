@@ -1,7 +1,7 @@
 import sys
 
 
-def NoImError(Exception):
+class NoImError(Exception):
     def __init__(self, message="Unknown Input"):
         super().__init__(message)
 
@@ -13,32 +13,28 @@ def score_ana() -> None:
         # Lenght of the list
         lenl = len(lis)
 
-        if (lenl == 1):
-            raise NoImError("No scores provided.",
-                            "Usage: python3 ft_score_analytics.py <score1>",
-                            "<score2> ...")
         # Allow me to verify that the list only has int or nothing
-        for i in lis:
-            if not type(i) is int:
-                print("Invalid parameter:", i)
-                lis.remove(i)
-        if (lenl == 1):
+        for arg in lis:
+            try:
+                lis.append(int(arg))
+            except ValueError:
+                print(f"Invalid parameter: {arg}")
+
+        if (lenl == 0):
             raise NoImError("No scores provided.",
                             "Usage: python3 ft_score_analytics.py <score1>",
                             "<score2> ...")
         # Sort the list
         lis = lis.sort()
 
-        total = 0
-        for arg in lis:
-            total += int(arg)
+        total = sum(lis)
 
-        top = lis[1]
+        top = lis[0]
         # for arg in sys.argv[1:]:
         #     if (int(arg) > top):
         #         top = int(arg)
 
-        bot = lis[lenl]
+        bot = lis[-1]
         # for arg in sys.argv[1:]:
         #     if (int(arg) < bot):
         #         bot = int(arg)

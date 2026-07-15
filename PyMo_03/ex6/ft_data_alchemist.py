@@ -21,19 +21,7 @@ if __name__ == "__main__":
     aver = float(sum(score.values()) / (len(score)))
 
     # Dictionary with scores higher than the average
-    high_scores = dict(score.items())
-    nom = high_scores.keys()
-    nh_nom = [n for n in nom if high_scores[n] > aver]
-    high_scores = {high_scores.pop(n) for n in nh_nom}
-
-    # nom = ""
-    # gen2 = [p for p in high_scores.keys()]
-    # for x in range(len(high_scores)):
-    #     nom = gen2[x]
-    #     if (high_scores.get(nom) < aver):
-    #         high_scores.pop(nom)
-    # for x in range(len(players)):
-    #     score[next(gen)] = random.randint(1, 1000)
+    high_scores = {name: val for name, val in score.items() if val > aver}
 
     # Print Zone
     print("Initial list", players)
