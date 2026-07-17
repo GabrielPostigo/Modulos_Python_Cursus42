@@ -8,39 +8,39 @@ class NoImError(Exception):
 
 def score_ana() -> None:
     try:
-        lis = sys.argv[1:]
-
-        # Lenght of the list
-        lenl = len(lis)
+        lis: list[int] = []
 
         # Allow me to verify that the list only has int or nothing
-        for arg in lis:
+        for arg in sys.argv[1:]:
             try:
                 lis.append(int(arg))
             except ValueError:
                 print(f"Invalid parameter: {arg}")
 
-        if (lenl == 0):
-            raise NoImError("No scores provided.",
-                            "Usage: python3 ft_score_analytics.py <score1>",
+        if (len(lis) == 0):
+            raise NoImError("No scores provided."
+                            "Usage: python3 ft_score_analytics.py <score1>"
                             "<score2> ...")
         # Sort the list
-        lis = lis.sort()
+        lis.sort()
 
-        total = sum(lis)
+        # Lenght of the list
+        lenl: int = len(lis)
 
-        top = lis[0]
+        total: int = sum(lis)
+
+        top: int = lis[0]
         # for arg in sys.argv[1:]:
         #     if (int(arg) > top):
         #         top = int(arg)
 
-        bot = lis[-1]
+        bot: int = lis[-1]
         # for arg in sys.argv[1:]:
         #     if (int(arg) < bot):
         #         bot = int(arg)
 
         # Range of the List
-        ran = top - bot
+        ran: int = top - bot
 
         # Average of the List
         aver: float = (total / lenl)

@@ -7,7 +7,7 @@ if __name__ == "__main__":
     lis = sys.argv[1:]
 
     # Creation of the Dictionary
-    dc = {}
+    dc: dict[str, int] = {}
 
     for i in lis:
         if ':' not in i:
@@ -27,6 +27,10 @@ if __name__ == "__main__":
 
     # ---
 
+    if len(dc) == 0:
+        print("Error: No valid items in inventory")
+        exit()
+
     # Lenght of the Dictionary
     dc_len = len(dc)
 
@@ -44,17 +48,17 @@ if __name__ == "__main__":
     print(f"Total quantity of the {dc_len} items: {total}")
 
     # Calculate the quantity percentage it represents in the inventory
-    p = 0
+    p: float = 0.0
     for y in dc_keys:
-        p = (dc.get(y) / total) * 100
+        p = (dc[y] / total) * 100
         print(f"Item {y} represents {p:.1f}%")
 
     # ---
 
     # the most and least abundant items
-    ma = max(dc, key=dc.get)
+    ma = max(dc, key=lambda x: dc[x])
     ma_va = dc[ma]
-    mi = min(dc, key=dc.get)
+    mi = min(dc, key=lambda x: dc[x])
     mi_va = dc[mi]
 
     print(f"Item most abundant: {ma} with quantity {ma_va}")

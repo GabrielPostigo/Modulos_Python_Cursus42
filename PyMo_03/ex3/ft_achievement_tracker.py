@@ -13,16 +13,16 @@ def gen_player_achievements() -> None:
 
     # Random number of achievements to give
     number_a: int = random.randint(0, achiL)
-    Alice = {random.sample(achi, number_a)}
+    Alice: set[str] = set(random.sample(sorted(achi), number_a))
 
     number_b: int = random.randint(0, achiL)
-    Bob = {random.sample(achi, number_b)}
+    Bob: set[str] = set(random.sample(sorted(achi), number_b))
 
     number_c: int = random.randint(0, achiL)
-    Charlie = {random.sample(achi, number_c)}
+    Charlie: set[str] = set(random.sample(sorted(achi), number_c))
 
     number_d: int = random.randint(0, achiL)
-    Dylan = {random.sample(achi, number_d)}
+    Dylan: set[str] = set(random.sample(sorted(achi), number_d))
 
     # Achievements shared by all players
     common_a = Alice.intersection(Bob, Charlie, Dylan)
@@ -37,10 +37,10 @@ def gen_player_achievements() -> None:
     only_d = Dylan.difference(Alice, Bob, Charlie)
 
     # For each player, list the missing achievements to have them all
-    miss_a = achi.differende(Alice)
-    miss_b = achi.differende(Bob)
-    miss_c = achi.differende(Charlie)
-    miss_d = achi.differende(Dylan)
+    miss_a = achi.difference(Alice)
+    miss_b = achi.difference(Bob)
+    miss_c = achi.difference(Charlie)
+    miss_d = achi.difference(Dylan)
 
     # Prints section
     print("Player Alice: ", Alice)
