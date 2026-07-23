@@ -3,8 +3,8 @@ import sys
 
 if __name__ == "__main__":
     try:
-        n = sys.argv[1]
-        nom = f"PyMo_04/ex0/{n}"
+        n: str = sys.argv[1]
+        nom = f"ex0/{n}"
 
         print("=== Cyber Archives Recovery ===")
         print(f"Accessing file {n}")
