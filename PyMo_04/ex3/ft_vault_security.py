@@ -1,6 +1,6 @@
 def secure_archive(nom: str, mode: int, add: str) -> tuple[bool, str]:
     try:
-        n: str = f"PyMo_04/ex3/{nom}"
+        n: str = f"ex3/{nom}"
         with open(n) as f:
             content = f.read()
         if mode == 0:
@@ -16,7 +16,7 @@ def secure_archive(nom: str, mode: int, add: str) -> tuple[bool, str]:
                     trans_lines.append(line)
 
             trans_content: str = '\n'.join(trans_lines)
-            name = f"PyMo_04/ex3/new_{nom}"
+            name = f"ex3/new_{nom}"
             new_file = open(name, "w")
             new_file.write(trans_content)
             new_file.close()
