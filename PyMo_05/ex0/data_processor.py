@@ -21,15 +21,32 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    pass
+    def __init__(self, data):
+        self.data = data
+
+    def validate(self, data):
+        return (isinstance(data, (int, float)) or
+                (isinstance(data, list) and
+                 all(isinstance(x, (int, float))) for x in data))
+
+    def ingest(self, data):
+        return super().ingest(data)
 
 
 class TextProcessor(DataProcessor):
-    pass
+    def __init__(self, data: str):
+        self.data = data
+
+    def validate(self, data):
+        return isinstance(data, str)
 
 
 class LogProcessor(DataProcessor):
-    pass
+    def __init__(self, data):
+        self.data = data
+
+    def validate(self) -> bool:
+        return isinstance(data, dict)
 
 
 if __name__ == "__main__":
