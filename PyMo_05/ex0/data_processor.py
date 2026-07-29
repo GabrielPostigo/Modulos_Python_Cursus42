@@ -7,6 +7,7 @@ class DataProcessor(ABC):
     def __init__(self):
         self._stor: list[str]
         self._total: int = 0
+
     # Abstract method that will check whether the input
     # data are appropriate for the current data processor
     @abstractmethod
@@ -30,10 +31,11 @@ class NumericProcessor(DataProcessor):
     def validate(self, data) -> bool:
         return (isinstance(data, (int, float)) or
                 isinstance(data, list) and
-                 all(isinstance(x, (int, float)) for x in data))
+                all(isinstance(x, (int, float)) for x in data))
 
     def ingest(self, data) -> None:
-        
+        pass
+
 
 class TextProcessor(DataProcessor):
     def __init__(self, data: str):
