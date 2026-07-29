@@ -44,7 +44,8 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, height, age, color: str):
+    def __init__(self, name: str, height: float,
+                 age: int, color: str):
         super().__init__(name, height, age)
         self._color = color
 
@@ -52,18 +53,19 @@ class Flower(Plant):
         print(f"{self.name}: {self._height}cm, {self._age} days old")
         print(f"Color: {self._color}")
 
-    def bloom(self, blo=False) -> None:
+    def bloom(self, blo: bool = False) -> None:
         self.show()
         if not blo:
             print(f"{self.name} has not bloomed yet")
-            print("[asking the rose to bloom]")
+            print(f"[asking the {self.name} to bloom]")
             self.bloom(blo=True)
         else:
             print(f"{self.name} is blooming beautifully!")
 
 
 class Tree(Plant):
-    def __init__(self, name, height, age, trunk_diameter: float):
+    def __init__(self, name: str, height: float,
+                 age: int, trunk_diameter: float):
         super().__init__(name, height, age)
         self._trunk_diameter = trunk_diameter
 
@@ -71,18 +73,20 @@ class Tree(Plant):
         super().show()
         print(f"Trunk diameter: {self._trunk_diameter}cm")
 
-    def produce_shade(self, sha=False) -> None:
+    def produce_shade(self, sha: bool = False) -> None:
         if not sha:
             print(f"[asking the {self.name} to produce shade]")
             self.produce_shade(sha=True)
         else:
             print(f"Tree {self.name} now produces",
-                  f"a shade of {self._height}cm long"
+                  f"a shade of {self._height}cm long "
                   f"and {self._trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, har_season, nutri_val):
+    def __init__(self, name: str, height: float,
+                 age: int, har_season: str,
+                 nutri_val: int):
         super().__init__(name, height, age)
         self._har_season = har_season
         self._nutri_val = nutri_val

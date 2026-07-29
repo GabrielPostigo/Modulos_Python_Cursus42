@@ -26,7 +26,7 @@ class Plant:
             print(f"Is {agey} days more than a year? -> False")
 
     class Stadistics:
-        def __init__(self):
+        def __init__(self) -> None:
             self._gc = 0
             self._ac = 0
             self._sc = 0
@@ -74,7 +74,9 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, height, age, color: str):
+    def __init__(self, name: str,
+                 height: float, age: int,
+                 color: str):
         super().__init__(name, height, age)
         self.color = color
         self.blo = False
@@ -93,23 +95,20 @@ class Flower(Plant):
 
 
 class Seed(Flower):
-    def __init__(self, name, height, age, color, seeds: int):
+    def __init__(self, name: str,
+                 height: float, age: int,
+                 color: str, seeds: int):
         super().__init__(name, height, age, color)
         self.seeds = seeds
         self.blo = False
 
     def show(self) -> None:
         super().show()
-        print(f"Color: {self.color}")
         self.bloom()
         print(f"Seeds: {self.seeds}")
 
     def bloom(self) -> None:
-        if not self.blo:
-            print(f"{self.name} has not bloomed yet")
-            self.blo = True
-        else:
-            print(f"{self.name} is blooming beautifully!")
+        super().bloom()
 
     def grow_20(self) -> None:
         print(f"[make {self.name.lower()} grow, age and bloom]")
@@ -122,7 +121,9 @@ class Seed(Flower):
 
 
 class Tree(Plant):
-    def __init__(self, name, height, age, trunk_diameter: float):
+    def __init__(self, name: str,
+                 height: float, age: int,
+                 trunk_diameter: float):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
@@ -133,12 +134,13 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         self.stats._pc += 1
         print(f"[asking the {self.name.lower()} to produce shade]")
-        print("Tree", {self.name}, "now produces a shade of", {self._height},
-              "cm long and", {self.trunk_diameter}, "cm wide.")
+        print("Tree", self.name, "now produces a shade of", self._height,
+              "cm long and", self.trunk_diameter, "cm wide.")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, har_season, nutri_val):
+    def __init__(self, name: str, height: float,
+                 age: int, har_season: str, nutri_val: int):
         super().__init__(name, height, age)
         self.har_season = har_season
         self.nutri_val = nutri_val
@@ -182,7 +184,7 @@ if __name__ == "__main__":
     print("=== Flower")
     rose.bloom()
     show_stats(rose)
-    print("[asking the rose to grow and bloom]")
+    print(f"[asking the {rose.name.lower()} to grow and bloom]")
     rose.grow()
     rose.bloom()
     show_stats(rose)
