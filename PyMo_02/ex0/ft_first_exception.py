@@ -1,4 +1,4 @@
-def input_temperature(temp_str: str):
+def input_temperature(temp_str: str) -> None:
     print(f"Input data is '{temp_str}'")
     try:
         temp_int = int(temp_str)
@@ -8,7 +8,7 @@ def input_temperature(temp_str: str):
               "for int() with base 10: '", temp_str, "'")
 
 
-def test_temperature():
+def test_temperature() -> None:
     input_temperature("25")
     input_temperature("abc")
     return ("All tests completed - program didn't crash!")

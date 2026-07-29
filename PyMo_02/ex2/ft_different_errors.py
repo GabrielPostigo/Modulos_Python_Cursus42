@@ -1,4 +1,4 @@
-def garden_operations(operation_number: int):
+def garden_operations(operation_number: int) -> None:
     print(f"Testing operation {operation_number}...")
     match operation_number:
         case 0:
@@ -21,7 +21,7 @@ def garden_operations(operation_number: int):
     print("I'm still running after the error")
 
 
-def test_error_types():
+def test_error_types() -> None:
     try:
         val = int('abc')
         val = 0 / val

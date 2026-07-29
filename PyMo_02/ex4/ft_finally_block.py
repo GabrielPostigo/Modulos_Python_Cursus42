@@ -8,14 +8,14 @@ class PlantError(GardenError):
         super().__init__(message)
 
 
-def water_plant(plant_name: str):
+def water_plant(plant_name: str) -> None:
     if (plant_name == plant_name.capitalize()):
         print(f"Watering {plant_name}: [OK]")
     else:
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
 
 
-def test_watering_system(pn1: str, pn2: str, pn3: str):
+def test_watering_system(pn1: str, pn2: str, pn3: str) -> None:
     print("Opening watering system")
     try:
         water_plant(pn1)

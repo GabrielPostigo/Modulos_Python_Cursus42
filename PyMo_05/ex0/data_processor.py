@@ -4,6 +4,9 @@ from abc import ABC, abstractmethod
 
 class DataProcessor(ABC):
 
+    def __init__(self):
+        self._stor: list[str]
+        self._total: int = 0
     # Abstract method that will check whether the input
     # data are appropriate for the current data processor
     @abstractmethod
@@ -17,21 +20,20 @@ class DataProcessor(ABC):
 
     # Method that will output ingested data
     def output(self) -> tuple[int, str]:
-        pass
+        return tuple(self._total, )
 
 
 class NumericProcessor(DataProcessor):
     def __init__(self, data):
         self.data = data
 
-    def validate(self, data):
+    def validate(self, data) -> bool:
         return (isinstance(data, (int, float)) or
-                (isinstance(data, list) and
-                 all(isinstance(x, (int, float))) for x in data))
+                isinstance(data, list) and
+                 all(isinstance(x, (int, float)) for x in data))
 
-    def ingest(self, data):
-        return super().ingest(data)
-
+    def ingest(self, data) -> None:
+        
 
 class TextProcessor(DataProcessor):
     def __init__(self, data: str):
