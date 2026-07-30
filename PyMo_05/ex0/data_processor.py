@@ -10,7 +10,6 @@ class DataProcessor(ABC):
 
     # Abstract method that will check whether the input
     # data are appropriate for the current data processor
-
     @abstractmethod
     def validate(self, data: Any) -> bool:
         pass
@@ -22,6 +21,8 @@ class DataProcessor(ABC):
 
     # Method that will output ingested data
     def output(self) -> tuple[int, str]:
+        if not self._stor:
+            raise IndexError("No data avaible in processor")
         consumed = self._total - len(self._storage)
         value = self._storage.pop(0)
         return (consumed, value)
