@@ -1,10 +1,10 @@
-import sys
+from sys import argv
 
 if __name__ == "__main__":
     print("=== Inventory System Analysis ===")
 
     # Creation of the list of all arguments
-    lis = sys.argv[1:]
+    lis = argv[1:]
 
     # Creation of the Dictionary
     dc: dict[str, int] = {}

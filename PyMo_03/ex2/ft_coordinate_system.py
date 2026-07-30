@@ -1,4 +1,4 @@
-import math
+from math import sqrt
 
 
 def get_player_pos() -> None:
@@ -15,7 +15,7 @@ def get_player_pos() -> None:
     tu: tuple[float, float, float] = (x, y, z)
     ce: tuple[float, float, float] = (0.0, 0.0, 0.0)
 
-    dis = math.sqrt((ce[0]-tu[0])**2 + (ce[1]-tu[1])**2 + (ce[2]-tu[2])**2)
+    dis = sqrt((ce[0]-tu[0])**2 + (ce[1]-tu[1])**2 + (ce[2]-tu[2])**2)
 
     print("Got a first tuple:", tu)
     print(f"It includes: X={tu[0]}, Y={tu[1]}, Z={tu[2]}")
@@ -35,7 +35,7 @@ def get_player_pos() -> None:
         z2 = float(input("Enter the Z value: "))
 
     tu2: tuple[float, float, float] = (x2, y2, z2)
-    dis2 = math.sqrt((tu2[0]-tu[0])**2 + (tu2[1]-tu[1])**2 + (tu2[2]-tu[2])**2)
+    dis2 = sqrt((tu2[0]-tu[0])**2 + (tu2[1]-tu[1])**2 + (tu2[2]-tu[2])**2)
 
     print("Distance between the 2 sets of coordinates:", dis2)
 

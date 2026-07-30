@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 
 class NoImError(Exception):
@@ -11,7 +11,7 @@ def score_ana() -> None:
         lis: list[int] = []
 
         # Allow me to verify that the list only has int or nothing
-        for arg in sys.argv[1:]:
+        for arg in argv[1:]:
             try:
                 lis.append(int(arg))
             except ValueError:

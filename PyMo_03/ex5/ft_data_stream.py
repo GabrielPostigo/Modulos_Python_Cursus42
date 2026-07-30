@@ -1,4 +1,4 @@
-import random as ra
+from random import choice
 
 
 # Function that picks a random name from a list
@@ -7,8 +7,8 @@ def gen_event():
     names = ["Alice", "Bob", "Charlie", "Dylan"]
     actions = ["eat", "sleep", "grab", "run", "move", "climb",
                "swim", "release"]
-    sel_n = ra.choice(names)
-    sel_a = ra.choice(actions)
+    sel_n = choice(names)
+    sel_a = choice(actions)
     # tu = tuple(sel_n, sel_a)
     yield (sel_n, sel_a)
 
@@ -17,7 +17,7 @@ def gen_event():
 # list, randomly pick one of its elements, remove it from the list, and yields
 # it, until the list is empty.
 def consume_event(li: list):
-    sel = ra.choice(li)
+    sel = choice(li)
     print("Got event from list:", sel)
     li.remove(sel)
     print("Remains in list:", li)

@@ -1,4 +1,4 @@
-import random
+from random import randint, sample
 
 
 def gen_player_achievements() -> None:
@@ -12,17 +12,17 @@ def gen_player_achievements() -> None:
     achiL: int = len(achi)
 
     # Random number of achievements to give
-    number_a: int = random.randint(0, achiL)
-    Alice: set[str] = set(random.sample(sorted(achi), number_a))
+    number_a: int = randint(0, achiL)
+    Alice: set[str] = set(sample(sorted(achi), number_a))
 
-    number_b: int = random.randint(0, achiL)
-    Bob: set[str] = set(random.sample(sorted(achi), number_b))
+    number_b: int = randint(0, achiL)
+    Bob: set[str] = set(sample(sorted(achi), number_b))
 
-    number_c: int = random.randint(0, achiL)
-    Charlie: set[str] = set(random.sample(sorted(achi), number_c))
+    number_c: int = randint(0, achiL)
+    Charlie: set[str] = set(sample(sorted(achi), number_c))
 
-    number_d: int = random.randint(0, achiL)
-    Dylan: set[str] = set(random.sample(sorted(achi), number_d))
+    number_d: int = randint(0, achiL)
+    Dylan: set[str] = set(sample(sorted(achi), number_d))
 
     # Achievements shared by all players
     common_a = Alice.intersection(Bob, Charlie, Dylan)

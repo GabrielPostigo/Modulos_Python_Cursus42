@@ -1,5 +1,4 @@
-import random
-
+from random import randint
 if __name__ == "__main__":
     players = ['Alice', 'bob',
                'Charlie', 'dylan', 'Emma', 'Gregory',
@@ -15,7 +14,7 @@ if __name__ == "__main__":
     score = {}
     gen = (p for p in players_cap)
     for x in range(len(players)):
-        score[next(gen)] = random.randint(1, 1000)
+        score[next(gen)] = randint(1, 1000)
 
     # Average of scores
     aver = float(sum(score.values()) / (len(score)))
