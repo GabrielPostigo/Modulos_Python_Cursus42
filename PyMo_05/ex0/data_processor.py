@@ -7,6 +7,7 @@ class DataProcessor(ABC):
     def __init__(self):
         self._stor: list[str] = []
         self._total: int = 0
+
     # Abstract method that will check whether the input
     # data are appropriate for the current data processor
 
