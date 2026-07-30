@@ -86,7 +86,6 @@ class Flower(Plant):
         print(f"Color: {self.color}")
 
     def bloom(self) -> None:
-        self.show()
         if not self.blo:
             print(f"{self.name} has not bloomed yet")
             self.blo = True
@@ -182,9 +181,11 @@ if __name__ == "__main__":
     print("")
 
     print("=== Flower")
+    rose.show()
     rose.bloom()
     show_stats(rose)
     print(f"[asking the {rose.name.lower()} to grow and bloom]")
+    rose.show()
     rose.grow()
     rose.bloom()
     show_stats(rose)
