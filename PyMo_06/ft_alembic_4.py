@@ -3,7 +3,7 @@ import alchemy
 
 def main() -> None:
     print("=== Alembic 4 ===")
-    print("Accessing the alchemy module using 'import alchemy")
+    print("Accessing the alchemy module using 'import alchemy'")
     print("Testing create_air: ", end="")
     print(alchemy.create_air())
     print("Now show that not all functions can be reached")
