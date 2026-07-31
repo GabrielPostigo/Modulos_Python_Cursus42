@@ -2,7 +2,7 @@
 from alchemy.potions import strength_potion
 # relative import
 from ..elements import create_air
-from ...elements import create_fire
+from elements import create_fire
 
 
 def lead_to_gold() -> str:
