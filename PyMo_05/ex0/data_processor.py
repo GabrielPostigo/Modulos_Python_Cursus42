@@ -25,8 +25,8 @@ class DataProcessor(ABC):
         if not self._stor:
             raise IndexError("No data avaible in processor")
 
-        consumed = self._total - len(self._storage)
-        value = self._storage.pop(0)
+        consumed = self._total - len(self._stor)
+        value = self._stor.pop(0)
         return (consumed, value)
 
 
@@ -41,8 +41,10 @@ class NumericProcessor(DataProcessor):
             - a list of int/float.
         """
         return (isinstance(data, (int, float)) or
-                isinstance(data, list) and
-                all(isinstance(x, (int, float)) for x in data))
+                (isinstance(data, list) and
+                 all(isinstance(x, (int, float)) for x in data)
+                 )
+                )
 
     def ingest(self, data: Union[int, float, list[int, float]]) -> None:
         """Convert numeric data to strings and store internally."""
@@ -55,7 +57,7 @@ class NumericProcessor(DataProcessor):
 
         # At this point data only can be a Int or a Float
         else:
-            self._stor.append(str(item))
+            self._stor.append(str(data))
             self._total += 1
 
 
@@ -69,7 +71,10 @@ class TextProcessor(DataProcessor):
             - a list of str.
         """
         return (isinstance(data, str) or
-                all(isinstance(x, (str)) for x in data))
+                (isinstance(data, list) and
+                 all(isinstance(x, str) for x in data)
+                 )
+                )
 
     def ingest(self, data: Union[str, list[str]]):
         if not self.validate(data):
@@ -81,7 +86,7 @@ class TextProcessor(DataProcessor):
 
         # At this point data only can be a String
         else:
-            self._stor.append(str(item))
+            self._stor.append(str(data))
             self._total += 1
 
 
@@ -100,7 +105,9 @@ class LogProcessor(DataProcessor):
         if isinstance(data, list):
             return all(isinstance(item, dict) and
                        all(isinstance(k, str) and isinstance(v, str)
-                       for k, v in data.items()) for item in data)
+                           for k, v in item.items())
+                       for item in data
+                       )
         return False
 
     def ingest(self,
@@ -112,15 +119,15 @@ class LogProcessor(DataProcessor):
             for item in data:
                 log_level = item.get("log_level", "")
                 log_message = item.get("log_message", "")
-                self._storage.append(f"{log_level}: {log_message}")
-                self._total_processed += 1
+                self._stor.append(f"{log_level}: {log_message}")
+                self._total += 1
 
         # At this point data only can be a Dictionary
         else:
             log_level = data.get("log_level", "")
             log_message = data.get("log_message", "")
-            self._storage.append(f"{log_level}: {log_message}")
-            self._total_processed += 1
+            self._stor.append(f"{log_level}: {log_message}")
+            self._total += 1
 
 
 if __name__ == "__main__":
