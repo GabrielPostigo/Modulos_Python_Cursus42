@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 class DataProcessor(ABC):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._stor: list[str] = []
         self._total: int = 0
 
@@ -29,7 +29,7 @@ class DataProcessor(ABC):
         value = self._stor.pop(0)
         return (consumed, value)
 
-    # Return the number of item still stored
+        # Return the number of item still stored
     def rest(self) -> int:
         return len(self._stor)
 
@@ -38,10 +38,10 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data) -> bool:
+    def validate(self, data: Any) -> bool:
         """Return True if data is:
             - int
             - float
@@ -53,7 +53,7 @@ class NumericProcessor(DataProcessor):
                  )
                 )
 
-    def ingest(self, data: Union[int, float, list[int, float]]) -> None:
+    def ingest(self, data: Union[int, float, list[int | float]]) -> None:
         """Convert numeric data to strings and store internally."""
         if not self.validate(data):
             raise TypeError("Improper numeric data")
@@ -69,10 +69,10 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data):
+    def validate(self, data: Any) -> bool:
         """Return True if data is:
             - str
             - a list of str.
@@ -83,7 +83,7 @@ class TextProcessor(DataProcessor):
                  )
                 )
 
-    def ingest(self, data: Union[str, list[str]]):
+    def ingest(self, data: Union[str, list[str]]) -> None:
         if not self.validate(data):
             raise TypeError("Improper string data")
         if isinstance(data, list):
@@ -98,10 +98,10 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data) -> bool:
+    def validate(self, data: Any) -> bool:
         """Return True if data is
             - dict[str,str]
             - a list thereof
@@ -137,8 +137,38 @@ class LogProcessor(DataProcessor):
             self._total += 1
 
 
+class ExportPlugin(Protocol):
+    def process_output(self, data: list[tuple[int, str]]) -> None:
+        """
+        which will act as a constraint for each export plugin
+        """
+        pass
+
+
+class CSVExpPlugin(ExportPlugin):
+    """Exports data as a CSV row (values only, comma-separated)."""
+    def process_output(self, data: list[tuple[int, str]]) -> None:
+
+        values = [value for _, value in data]
+
+        csv_line = ",".join(values)
+
+        print("CSV Output:\n", csv_line)
+
+
+class JSONExpPlugin(ExportPlugin):
+    """Exports data as a JSON object keyed by item index."""
+    def process_output(self, data: list[tuple[int, str]]) -> None:
+
+        pairs = [f'"item_{rank}": "{value}"' for rank, value in data]
+
+        json_str = "{" + ", ".join(pairs) + "}"
+
+        print("JSON Output:\n", json_str)
+
+
 class DataStream:
-    def __init__(self):
+    def __init__(self) -> None:
         self._processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
@@ -187,28 +217,82 @@ class DataStream:
 
     def output_pipeline(self, nb: int, plugin: ExportPlugin) -> None:
         """
-        Consume nb elements from all registered data processors and
-        export them using the provided compatible plugin
+            Consume nb elements from all registered data processors and
+            export them using the provided compatible plugin
         """
-        
-        from proc in self._processors:
+        for proc in self._processors:
             collected: list[tuple[int, str]] = []
-            
-
-
-class ExportPlugin(Protocol):
-    def process_output(self, data: list[tuple[int, str]]) -> None:
-        """
-        which will act as a constraint for each export plugin
-        """
-        pass
+            for _ in range(nb):
+                if proc.rest() == 0:
+                    break
+                collected.append(proc.output())
+            if collected:
+                plugin.process_output(collected)
 
 
 if __name__ == "__main__":
-    print("=== Code Nexus - Data Stream ===")
+    print("=== Code Nexus - Data Pipeline ===")
 
     num = NumericProcessor()
     txt = TextProcessor()
     log_ = LogProcessor()
     stream = DataStream()
+    csv_plu = CSVExpPlugin()
+    json_plu = JSONExpPlugin()
+
+    print("Initialize Data Stream")
+    stream.print_processors_stats()
     print()
+
+    print("Registering Processors")
+    stream.register_processor(num)
+    stream.register_processor(txt)
+    stream.register_processor(log_)
+    print()
+
+    batch1: list[Any] = [
+            "Hello world",
+            [3.14, -1, 2.71],
+            [
+                {"log_level": "WARNING",
+                 "log_message": "Telnet access! Use ssh instead"},
+                {"log_level": "INFO",
+                 "log_message": "User wil is connected"},
+            ],
+            42,
+            ["Hi", "five"],
+        ]
+
+    print(f"Send first batch of data on stream: {batch1}")
+    stream.process_stream(batch1)
+    stream.print_processors_stats()
+    print()
+
+    # CSV Plugin
+    print("Send 3 processed data from each processor to a CSV plugin:")
+    stream.output_pipeline(3, csv_plu)
+    stream.print_processors_stats()
+    print()
+
+    batch2: list[Any] = [
+        21,
+        ["I love AI", "LLMs are wonderful", "Stay healthy"],
+        [
+            {"log_level": "ERROR", "log_message": "500 server crash"},
+            {"log_level": "NOTICE",
+             "log_message": "Certificate expires in 10 days"},
+        ],
+        [32, 42, 64, 84, 128, 168],
+        "World hello",
+    ]
+
+    print(f"Send another batch of data: {batch2}")
+    stream.process_stream(batch2)
+    stream.print_processors_stats()
+    print()
+
+    # JSON Plugin
+    print("Send 5 processed data from each processor to a JSON plugin:")
+    stream.output_pipeline(5, json_plu)
+    print()
+    stream.print_processors_stats()

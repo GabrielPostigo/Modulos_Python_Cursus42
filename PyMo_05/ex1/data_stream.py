@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 class DataProcessor(ABC):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._stor: list[str] = []
         self._total: int = 0
 
@@ -29,7 +29,7 @@ class DataProcessor(ABC):
         value = self._stor.pop(0)
         return (consumed, value)
 
-    # Return the number of item still stored
+        # Return the number of item still stored
     def rest(self) -> int:
         return len(self._stor)
 
@@ -38,10 +38,10 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data) -> bool:
+    def validate(self, data: Any) -> bool:
         """Return True if data is:
             - int
             - float
@@ -53,7 +53,7 @@ class NumericProcessor(DataProcessor):
                  )
                 )
 
-    def ingest(self, data: Union[int, float, list[int, float]]) -> None:
+    def ingest(self, data: Union[int, float, list[int | float]]) -> None:
         """Convert numeric data to strings and store internally."""
         if not self.validate(data):
             raise TypeError("Improper numeric data")
@@ -69,10 +69,10 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data):
+    def validate(self, data: Any) -> bool:
         """Return True if data is:
             - str
             - a list of str.
@@ -83,7 +83,7 @@ class TextProcessor(DataProcessor):
                  )
                 )
 
-    def ingest(self, data: Union[str, list[str]]):
+    def ingest(self, data: Union[str, list[str]]) -> None:
         if not self.validate(data):
             raise TypeError("Improper string data")
         if isinstance(data, list):
@@ -98,10 +98,10 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-    def validate(self, data) -> bool:
+    def validate(self, data: Any) -> bool:
         """Return True if data is
             - dict[str,str]
             - a list thereof
@@ -138,7 +138,7 @@ class LogProcessor(DataProcessor):
 
 
 class DataStream:
-    def __init__(self):
+    def __init__(self) -> None:
         self._processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
