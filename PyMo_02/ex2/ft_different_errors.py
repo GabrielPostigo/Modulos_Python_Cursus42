@@ -2,42 +2,43 @@ def garden_operations(operation_number: int) -> None:
     print(f"Testing operation {operation_number}...")
     match operation_number:
         case 0:
-            print("Caught ValueError: invalid literal for int()",
-                  "with base 10: 'abc'")
-            print("")
+            val = int("abc")
+            print(val)
         case 1:
-            print("Caught ZeroDivisionError: division by zero")
+            res = 1/0
+            print(res)
         case 2:
-            print("Caught FileNotFoundError: [Errno 2] No such",
-                  "file or directory: '/non/existent/file'")
-            print("")
+            file = open("/non/existent/file")
+            print(file.read())
         case 3:
-            print("Caught TypeError: can only concatenate str",
-                  "(not 'int') to str")
-            print("")
-        case _:
+            result = "text" + 13  # type: ignore[operator]
+            print(result)
+        case _:  # default value
             print("Operation completed successfully")
-    print("")
-    print("I'm still running after the error")
 
 
 def test_error_types() -> None:
     try:
-        val = int('abc')
-        val = 0 / val
-
-        file = open("test.txt")
-        file = "rar"
-        file = file + 13
-        garden_operations(4)
-    except ValueError:
         garden_operations(0)
-    except ZeroDivisionError:
+    except ValueError as e:
+        print(f"Caught ValueError: {e}")
+
+    try:
         garden_operations(1)
-    except FileExistsError:
+    except ZeroDivisionError as e:
+        print(f"Caught ZeroDivisionError: {e}")
+
+    try:
         garden_operations(2)
-    except TypeError:
+    except (ValueError, FileNotFoundError) as e:
+        print(f"Caught FileNotFoundError: {e}")
+
+    try:
         garden_operations(3)
+    except TypeError as e:
+        print(f"Caught TypeError: {e}")
+
+    garden_operations(4)
 
 
 if __name__ == "__main__":

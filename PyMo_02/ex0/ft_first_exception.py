@@ -8,7 +8,7 @@ def input_temperature(temp_str: str) -> None:
               "for int() with base 10: '", temp_str, "'")
 
 
-def test_temperature() -> None:
+def test_temperature() -> str:
     input_temperature("25")
     input_temperature("abc")
     return ("All tests completed - program didn't crash!")
