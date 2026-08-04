@@ -1,4 +1,4 @@
-from light_validator import validate_ingredients
+from .light_validator import validate_ingredients
 
 
 def light_spell_allowed_ingredients() -> list[str]:
@@ -14,4 +14,17 @@ def light_spell_record(spell_name: str, ingredients: str) -> str:
     turns a string that indicates whether the spell is recorded or rejected.
     The decision comes from the validation function described below
     '''
-    tested = validate_ingredients(ingredients)
+    tested: str = validate_ingredients(ingredients)
+    splited: list[str] = tested.split()
+    conf: bool = False
+
+    for word in splited:
+        if word == 'VALID':
+            conf = True
+        elif word == 'INVALID':
+            conf = False
+
+    if conf:
+        return f"Spell recorded: {spell_name} ({tested})"
+
+    return f"Spell rejected: {spell_name} ({tested})"
