@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-# from typing import 
+# from typing import
 
 
 class HealCapability(ABC):
