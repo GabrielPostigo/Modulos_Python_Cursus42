@@ -1,6 +1,6 @@
 # from typing import
 from abc import ABC, abstractmethod
-import creature as cre
+from . import creature as cre
 
 
 class CreatureFactory(ABC):

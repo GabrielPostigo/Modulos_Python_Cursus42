@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
-# from typing import
 
 
 class HealCapability(ABC):
 
     @abstractmethod
-    def heal(self) -> str:
+    def heal(self, target: str) -> str:
         pass
 
 

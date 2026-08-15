@@ -1,4 +1,4 @@
-from factory import FlameFactory, AquaFactory
+from ex0 import FlameFactory, AquaFactory
 
 
 def main():
