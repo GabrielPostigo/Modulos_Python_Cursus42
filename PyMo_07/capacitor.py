@@ -9,30 +9,23 @@ def main():
     bloom = h_fac.create_evolved()
 
     print("Testing Creature with healing capability \n base:")
-    spro.describe()
-    spro.attack()
-    spro.heal("itself")
+    print(spro.describe(), spro.attack(), spro.heal("itself"), sep="\n")
     print("evolved:")
-    bloom.describe()
-    bloom.attack()
-    bloom.heal("itself and others")
+    print(bloom.describe(), bloom.attack(),
+          bloom.heal("itself and others"), sep="\n")
     print()
 
     shift = t_fac.create_base()
     morp = t_fac.create_evolved()
 
     print("Testing Creature with transform capability \n base:")
-    shift.describe()
-    shift.attack()
-    shift.transform()
-    shift.attack()
-    shift.revert()
+    print(shift.describe(), shift.attack(),
+          shift.transform(), shift.attack(),
+          shift.revert(), sep="\n")
     print("evolved:")
-    morp.describe()
-    morp.attack()
-    morp.transform()
-    morp.attack()
-    morp.revert()
+    print(morp.describe(), morp.attack(),
+          morp.transform(), morp.attack(),
+          morp.revert(), sep="\n")
 
 
 if __name__ == "__main__":
