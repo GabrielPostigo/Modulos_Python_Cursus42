@@ -38,6 +38,7 @@ class AggressiveStrategy(BattleStrategy):
     def act(self, cre):
         if not self.is_valid(cre):
             raise ValueError(
+                "Battle error, aborting tournament: ",
                 f"Invalid creature '{cre._name}' for this Aggressive Strategy"
             )
         print(cre.transform(), cre.attack(),
@@ -54,5 +55,6 @@ class DefensiveStrategy(BattleStrategy):
     def act(self, cre):
         if not self.is_valid(cre):
             raise ValueError(
+                "Battle error, aborting tournament: ",
                 f"Invalid creature '{cre._name}' for this Defensive Strategy")
         print(cre.attack(), cre.heal(), sep="\n")  # type: ignore[attr-defined]
