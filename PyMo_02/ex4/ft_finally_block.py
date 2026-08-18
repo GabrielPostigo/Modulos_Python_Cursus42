@@ -1,10 +1,10 @@
 class GardenError(Exception):
-    def __init__(self, message="Unknown Garden error"):
+    def __init__(self, message: str = "Unknown Garden error") -> None:
         super().__init__(message)
 
 
 class PlantError(GardenError):
-    def __init__(self, message="Unknown Plant error"):
+    def __init__(self, message: str = "Unknown Plant error") -> None:
         super().__init__(message)
 
 
@@ -22,7 +22,7 @@ def test_watering_system(pn1: str, pn2: str, pn3: str) -> None:
         water_plant(pn2)
         water_plant(pn3)
     except PlantError as p:
-        print(f"Caught GardenError: {p}")
+        print(f"Caught PlantError: {p}")
         print(".. ending tests and returning to main")
     finally:
         print("Closing watering system")
