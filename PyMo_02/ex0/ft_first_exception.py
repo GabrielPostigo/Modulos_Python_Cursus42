@@ -1,11 +1,12 @@
 def input_temperature(temp_str: str) -> int:
     print(f"Input data is '{temp_str}'")
+    temp_int: int = 0
     try:
-        temp_int: int = int(temp_str)
-        return temp_int
+        temp_int = int(temp_str)
     except ValueError:
-        print("Caught input_temperature error: invalid literal "
-              "for int() with base 10: '", temp_str, "'")
+        print(f"Caught input_temperature error: invalid literal "
+              f"for int() with base 10: '{temp_str}'")
+    return temp_int
 
 
 def test_temperature() -> str:
