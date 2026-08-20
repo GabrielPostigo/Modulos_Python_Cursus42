@@ -3,14 +3,14 @@ from random import choice
 
 # Function that picks a random name from a list
 # of players, and a random action from a list of actions.
-def gen_event():
+def gen_event() -> None:
     names = ["Alice", "Bob", "Charlie", "Dylan"]
     actions = ["eat", "sleep", "grab", "run", "move", "climb",
                "swim", "release"]
     sel_n = choice(names)
     sel_a = choice(actions)
-    # tu = tuple(sel_n, sel_a)
-    yield (sel_n, sel_a)
+    while True:
+        yield (sel_n, sel_a)
 
 
 # Function that takes the previously created
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     print("=== Game Data Stream Processor ===")
     i = 0
     events = []
-    for j in range(12):
+    for j in range(1000):
         g = gen_event()
         tup: tuple = next(g)
         if (i <= 9):

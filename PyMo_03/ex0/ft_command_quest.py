@@ -1,8 +1,7 @@
 from sys import argv
 
-x = len(argv)
-
 if __name__ == "__main__":
+    x = len(argv)
     print("=== Command Quest ===")
     print("Program name:", argv[0])
     if (x == 1):
