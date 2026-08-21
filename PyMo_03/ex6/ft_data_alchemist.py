@@ -1,4 +1,6 @@
 from random import randint
+
+
 if __name__ == "__main__":
     players = ['Alice', 'bob',
                'Charlie', 'dylan', 'Emma', 'Gregory',
@@ -11,10 +13,7 @@ if __name__ == "__main__":
     players_only = [x for x in players if x == x.capitalize()]
 
     # Dictionary from this full capitalized list
-    score = {}
-    gen = (p for p in players_cap)
-    for x in range(len(players)):
-        score[next(gen)] = randint(1, 1000)
+    score = {name: randint(1, 1000) for name in players_cap}
 
     # Average of scores
     aver = float(sum(score.values()) / (len(score)))
@@ -23,6 +22,7 @@ if __name__ == "__main__":
     high_scores = {name: val for name, val in score.items() if val > aver}
 
     # Print Zone
+    print("=== Game Data Alchemist === \n")
     print("Initial list", players)
     print()
     print("Only capitalize:", players_only)
