@@ -53,10 +53,10 @@ if __name__ == "__main__":
         print("Usage: ft_ancient_text.py <file>")
         print()
     except FileNotFoundError:
-        print(f"[STDER] Error opening file '{n}': [Errno 2]",
-              f"No such file or directory: '{n}'")
+        print(f"[STDERR] Error opening file '{n}': [Errno 2]",
+              f"No such file or directory: '{n}'", file=sys.stderr)
         print()
     except PermissionError:
-        print(f"[STDER]Error opening file '{n}':",
+        print(f"[STDERR] Error opening file '{n}':",
               "[Errno 13] Permission denied: '{n}'")
         print()
