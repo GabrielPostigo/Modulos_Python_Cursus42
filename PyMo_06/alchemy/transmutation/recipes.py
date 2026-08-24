@@ -10,5 +10,5 @@ def lead_to_gold() -> str:
     strength: str = strength_potion()
     fire: str = create_fire()
     return (f"Recipe transmuting Lead to Gold: brew ’{air}’ "
-            f"and ’{strength}’ mixed"
+            f"and ’{strength}’ mixed "
             f"with ’{fire}’")
