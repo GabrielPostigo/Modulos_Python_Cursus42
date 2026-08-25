@@ -4,11 +4,10 @@ import sys
 if __name__ == "__main__":
     try:
         n: str = sys.argv[1]
-        nom = f"ex0/{n}"
 
         print("=== Cyber Archives Recovery ===")
         print(f"Accessing file {n}")
-        file = open(nom, "r")
+        file = open(n, "r")
 
         print("---")
         print()

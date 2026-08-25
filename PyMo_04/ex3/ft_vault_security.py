@@ -1,6 +1,6 @@
 def secure_archive(nom: str, mode: int, add: str) -> tuple[bool, str]:
     try:
-        n: str = f"ex3/{nom}"
+        n: str = nom
         with open(n) as f:
             content = f.read()
         if mode == 0:
