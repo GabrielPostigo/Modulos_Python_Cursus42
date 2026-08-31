@@ -46,7 +46,7 @@ if __name__ == "__main__":
             print(f"Data saved in file '{us_name}'")
 
     except IndexError:
-        print("Usage: ft_ancient_text.py <file>")
+        print("Usage: ft_archive_creation.py <file>")
         print()
     except FileNotFoundError:
         print(f"Error opening file '{n}': [Errno 2]",

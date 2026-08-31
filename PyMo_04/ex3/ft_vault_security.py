@@ -45,8 +45,8 @@ if __name__ == "__main__":
     print()
 
     print("Using 'secure_archive'to read from an regular file:")
-    print(secure_archive("text.txt", 0, ""))
+    print(secure_archive("ancient_fragment.txt", 0, ""))
     print()
 
     print("Using 'secure_archive'to write previous content to a new file:")
-    print(secure_archive("text.txt", 1, "hola"))
+    print(secure_archive("ancient_fragment.txt", 1, "hola"))

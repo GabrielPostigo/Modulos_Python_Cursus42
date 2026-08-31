@@ -49,7 +49,7 @@ if __name__ == "__main__":
             print(f"Data saved in file '{us_name}'")
 
     except IndexError:
-        print("Usage: ft_ancient_text.py <file>")
+        print("Usage: ft_stream_management.py <file>")
         print()
     except FileNotFoundError:
         print(f"[STDERR] Error opening file '{n}': [Errno 2]",
@@ -57,5 +57,5 @@ if __name__ == "__main__":
         print()
     except PermissionError:
         print(f"[STDERR] Error opening file '{n}':",
-              "[Errno 13] Permission denied: '{n}'")
+              f"[Errno 13] Permission denied: '{n}'", file=sys.stderr)
         print()
