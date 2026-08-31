@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 def in_venv() -> None:
@@ -28,15 +29,15 @@ def in_venv() -> None:
         print("MATRIX STATUS: Welcome to the construct",
               "",
               f"Current Python: {sys.executable}",
-              "Virtual Environment: None detected",
-              "Environment Path: ",
+              f"Virtual Environment: {os.path.basename(sys.prefix)}",
+              f"Environment Path: {sys.prefix}",
               "",
               "SUCCESS: You're in an isolated environment!",
               "Safe to install packages without affecting",
               "the global system.",
               "",
               "Package installation path:",
-              "/path/to/matrix_env/lib/python3.11/site-packages",
+              f"{sys.prefix}/lib/python3.10/site-packages",
               sep="\n")
 
 
