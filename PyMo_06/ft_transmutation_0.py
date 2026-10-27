@@ -4,7 +4,7 @@ import alchemy.transmutation.recipes
 def main() -> None:
     print("=== Transmutation 0 ===")
     print("Using file alchemy/transmutation/recipes.py directly")
-    print("Testing lead to gold: : ", end="")
+    print("Testing lead to gold: ", end="")
     print(alchemy.transmutation.recipes.lead_to_gold())
     print()
 

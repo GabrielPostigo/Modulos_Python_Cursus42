@@ -1,4 +1,4 @@
-from .dark_validator import validate_ingredients
+from .dark_validator import dark_validate_ingredients
 
 
 def dark_spell_allowed_ingredients() -> list[str]:
@@ -14,7 +14,7 @@ def dark_spell_record(spell_name: str, ingredients: str) -> str:
     turns a string that indicates whether the spell is recorded or rejected.
     The decision comes from the validation function described below
     '''
-    tested: str = validate_ingredients(ingredients)
+    tested: str = dark_validate_ingredients(ingredients)
     splited: list[str] = tested.split()
     conf: bool = False
 

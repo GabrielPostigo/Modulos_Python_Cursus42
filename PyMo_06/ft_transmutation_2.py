@@ -2,9 +2,9 @@ import alchemy
 
 
 def main() -> None:
-    print("=== Transmutation 1 ===")
+    print("=== Transmutation 2 ===")
     print("Import alchemy module only")
-    print("Testing lead to gold: : ", end="")
+    print("Testing lead to gold: ", end="")
     print(alchemy.lead_to_gold())
     print()
 

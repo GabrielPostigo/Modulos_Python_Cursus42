@@ -2,7 +2,8 @@ def validate_ingredients(ingredients: str) -> str:
     from .light_spellbook import light_spell_allowed_ingredients
 
     ing_or: list[str] = light_spell_allowed_ingredients()
-    ing_new: list[str] = ingredients.split()
+    ing_new: list[str] = [w.strip(",.;:!?").lower()
+                          for w in ingredients.split()]
     cont: int = 0
 
     for ele in ing_new:
