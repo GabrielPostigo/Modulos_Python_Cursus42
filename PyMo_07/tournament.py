@@ -8,7 +8,7 @@ def battle(lis: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
     print("*** Tournament ***")
     print(f"{len(lis)} opponents involved")
 
-    for op in range(lis):
+    for op in range(len(lis)):
         for op2 in range(op + 1, len(lis)):
             factory_a, strategy_a = lis[op]
             factory_b, strategy_b = lis[op2]

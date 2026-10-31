@@ -1,43 +1,45 @@
-from ex0 import FlameFactory, AquaFactory
+from ex0 import AquaFactory, CreatureFactory, FlameFactory
+
+
+def test_factory(factory: CreatureFactory) -> None:
+    creature = factory.create_base()
+    evolved_creature = factory.create_evolved()
+
+    print(
+        "Testing factory",
+        creature.describe(),
+        creature.attack(),
+        evolved_creature.describe(),
+        evolved_creature.attack(),
+        "",
+        sep="\n",
+    )
+
+
+def battle(factory_a: CreatureFactory, factory_b: CreatureFactory) -> None:
+    creature_a = factory_a.create_base()
+    creature_b = factory_b.create_base()
+
+    print(
+        "Testing battle",
+        creature_a.describe(),
+        " vs.",
+        creature_b.describe(),
+        " fight!",
+        creature_a.attack(),
+        creature_b.attack(),
+        "",
+        sep="\n",
+    )
 
 
 def main():
-
     flm_fac = FlameFactory()
     aqua_fac = AquaFactory()
 
-    flm_cre = flm_fac.create_base()
-    flm_cre_ev = flm_fac.create_evolved()
-
-    aqua_cre = aqua_fac.create_base()
-    aqua_cre_ev = aqua_fac.create_evolved()
-
-    print(
-        "Testing factory",
-        flm_cre.describe(),
-        flm_cre.attack(),
-        flm_cre_ev.describe(),
-        flm_cre_ev.attack(),
-        "", sep="\n"
-        )
-    print(
-        "Testing factory",
-        aqua_cre.describe(),
-        aqua_cre.attack(),
-        aqua_cre_ev.describe(),
-        aqua_cre_ev.attack(),
-        "", sep="\n"
-        )
-    print(
-        "Testing battle",
-        flm_cre.describe(),
-        " vs.",
-        aqua_cre.describe(),
-        " fight!",
-        flm_cre.attack(),
-        aqua_cre.attack(),
-        "", sep="\n"
-        )
+    test_factory(flm_fac)
+    test_factory(aqua_fac)
+    battle(flm_fac, aqua_fac)
 
 
 if __name__ == "__main__":
