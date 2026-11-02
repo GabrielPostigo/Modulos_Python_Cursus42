@@ -3,8 +3,6 @@ name = "loading"
 version = "1.0.0"
 description = "Matrix data simulation"
 authors = ["gapostig"]
-readme = "README.md"
-python = "^3.10"
 
 [tool.poetry.dependencies]
 python = "^3.10"

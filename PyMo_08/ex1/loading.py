@@ -2,6 +2,7 @@ import sys
 import importlib.util
 from typing import Optional
 
+
 def check_package(name: str) -> Optional[str]:
     """Return version string if package is installed, else None."""
     spec = importlib.util.find_spec(name)
@@ -13,6 +14,7 @@ def check_package(name: str) -> Optional[str]:
         return str(version)
     except Exception:
         return None
+
 
 def show_dependency_manager_info() -> None:
     """Show the difference between pip and Poetry."""
@@ -27,6 +29,7 @@ def show_dependency_manager_info() -> None:
     print("    - Generates poetry.lock for fully reproducible installs")
     print("    - Install with: poetry install")
     print("    - Manages virtual environments automatically")
+
 
 def check_all_dependencies() -> bool:
     """Check all required packages and print their status."""
@@ -55,11 +58,11 @@ def check_all_dependencies() -> bool:
 
 def run_analysis() -> None:
     """Load Matrix data with numpy/pandas and visualize with matplotlib."""
-    import numpy as np  # type: ignore
-    import pandas as pd  # type: ignore
-    import matplotlib  # type: ignore
+    import numpy as np
+    import pandas as pd
+    import matplotlib
     matplotlib.use("Agg")
-    import matplotlib.pyplot as plt  # type: ignore
+    import matplotlib.pyplot as plt
 
     print()
     print("Analyzing Matrix data...")
