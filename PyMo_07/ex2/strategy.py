@@ -3,6 +3,10 @@ from ex0 import Creature
 from ex1 import TransformCapability, HealCapability
 
 
+class InvalidCreatureError(Exception):
+    pass
+
+
 class BattleStrategy(ABC):
     @abstractmethod
     def act(self, cre: Creature) -> str:
@@ -21,8 +25,8 @@ class BattleStrategy(ABC):
 
 
 class NormalStrategy(BattleStrategy):
-    def act(self, cre: Creature) -> str:
-        return cre.attack()
+    def act(self, cre: Creature):
+        print(cre.attack())
 
     def is_valid(self, cre: Creature) -> bool:
         return True
@@ -37,9 +41,9 @@ class AggressiveStrategy(BattleStrategy):
 
     def act(self, cre):
         if not self.is_valid(cre):
-            raise ValueError(
+            raise InvalidCreatureError(
                 "Battle error, aborting tournament: ",
-                f"Invalid creature '{cre._name}' for this Aggressive Strategy"
+                f"Invalid creature '{cre._name}' for this aggressive Strategy"
             )
         print(cre.transform(), cre.attack(),
               cre.revert(), sep="\n")  # type: ignore[attr-defined]
@@ -54,7 +58,7 @@ class DefensiveStrategy(BattleStrategy):
 
     def act(self, cre):
         if not self.is_valid(cre):
-            raise ValueError(
+            raise InvalidCreatureError(
                 "Battle error, aborting tournament: ",
                 f"Invalid creature '{cre._name}' for this Defensive Strategy")
         print(cre.attack(), cre.heal(), sep="\n")  # type: ignore[attr-defined]

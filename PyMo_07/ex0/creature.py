@@ -8,15 +8,15 @@ class Creature(ABC):
         self._type: str = type_
 
     @abstractmethod
-    def attack(self):
+    def attack(self) -> str:
         pass
 
     def describe(self) -> str:
-        return f"{self._name} is a {self._type} Creature"
+        return f"{self._name} is a {self._type} type Creature"
 
 
 class Flameling(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self._name = "Flameling"
         self._type = "Fire"
 
@@ -28,7 +28,7 @@ class Flameling(Creature):
 
 
 class Pyrodon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self._name = "Pyrodon"
         self._type = "Fire/Flying"
 
@@ -40,7 +40,7 @@ class Pyrodon(Creature):
 
 
 class Aquabub(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self._name = "Aquabub"
         self._type = "Water"
 
@@ -52,7 +52,7 @@ class Aquabub(Creature):
 
 
 class Torragon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self._name = "Torragon"
         self._type = "Water"
 

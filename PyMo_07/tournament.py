@@ -2,6 +2,7 @@ from ex0 import FlameFactory, AquaFactory, CreatureFactory
 from ex1 import TransformCreatureFactory, HealingCreatureFactory
 from ex2 import BattleStrategy, NormalStrategy
 from ex2 import AggressiveStrategy, DefensiveStrategy
+from ex2 import InvalidCreatureError
 
 
 def battle(lis: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
@@ -26,7 +27,7 @@ def battle(lis: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
             try:
                 strategy_a.act(creature_a)
                 strategy_b.act(creature_b)
-            except ValueError as e:
+            except InvalidCreatureError as e:
                 print(f"Battle error, aborting tournament: {e}")
                 return
 

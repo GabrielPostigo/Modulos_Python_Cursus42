@@ -6,7 +6,7 @@ from .capabilities import HealCapability, TransformCapability
 class Sproutling(HealCapability, Creature):
     def __init__(self,
                  name="Sproutling",
-                 type_="Grass"):
+                 type_="Grass") -> None:
         self._name = name
         self._type = type_
 
