@@ -1,5 +1,12 @@
 import alchemy
 
+'''
+    The create_earth() function will not be exposed through the module
+    interface and raise an exception when called (you can catch the exception
+    or not, this is only for pedagogical purposes).
+    A mypy error will also raise, again, on purpose
+'''
+
 
 def main() -> None:
     print("=== Alembic 4 ===")
